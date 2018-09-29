@@ -14,6 +14,7 @@ const clovaSkillHandler = clova.Client
   .onIntentRequest(async responseHelper => {
     const intent = responseHelper.getIntentName();
     const sessionId = responseHelper.getSessionId();
+    console.log("intent:" + intent);
 
     switch (intent) {
       case 'class_set':
