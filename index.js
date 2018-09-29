@@ -61,6 +61,10 @@ const clovaSkillHandler = clova.Client
             value: m,
           }
         ]);
+
+        if (m == "間に合うよ") {
+          responseHelper.endSession();
+        }
         break;
 
       case 'Clova.NoIntent':
