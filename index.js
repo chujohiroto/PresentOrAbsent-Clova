@@ -62,7 +62,7 @@ const clovaSkillHandler = clova.Client
           }
         ]);
 
-        if (m == "間に合うよ") {
+        if (m != "諦めろ") {
           responseHelper.endSession();
         }
         break;
