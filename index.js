@@ -161,6 +161,7 @@ function getTimeLesson(t) {
       lesson = new Date(new Date().setHours(21, 30, 0, 0));
       break;
     default:
+      lesson = new Date(new Date().setHours(0, 0, 0, 0));
       break;
   }
   return lesson;
