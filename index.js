@@ -18,12 +18,39 @@ const clovaSkillHandler = clova.Client
 
     switch (intent) {
       case 'class_set':
-        console.log(intent.value);
+        const slots = responseHelper.getSlots();
+
+        if (!('class' in slots)) {
+          speech = {
+            lang: 'ja',
+            type: 'PlainText',
+            value: `想定しないスロット名です。カスタムスロットの名前が正しいかご確認ください。`
+          }
+          responseHelper.setSimpleSpeech(speech)
+          break
+        }
+        // Slotに登録されていない星座はnullになる
+        if (slots.class == null) {
+          speech = {
+            lang: 'ja',
+            type: 'PlainText',
+            value: `数字に誤りがあります。`
+          }
+          responseHelper.setSimpleSpeech(speech)
+          // 第2引数にtrueを設定するとreprompt(入力が行われなかった場合の聞き返し)の文を定義できる
+          responseHelper.setSimpleSpeech(speech, true)
+          // 下記でも可
+          /*
+          responseHelper.setSimpleSpeech(
+            clova.SpeechBuilder.createSpeechText(`星座に誤りがあります。他の星座でお試し下さい。`)
+          );
+          */
+        }
         // Build speechObject directly for response
         responseHelper.setSimpleSpeech({
           lang: 'ja',
           type: 'PlainText',
-          value: getMessage(intent.value),
+          value: getMessage(slots.class),
         });
         break;
 
