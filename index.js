@@ -24,7 +24,7 @@ const clovaSkillHandler = clova.Client
           speech = {
             lang: 'ja',
             type: 'PlainText',
-            value: `想定しないスロット名です。カスタムスロットの名前が正しいかご確認ください。`
+            value: `知らない言葉だよーん`
           }
           responseHelper.setSimpleSpeech(speech)
           break
@@ -34,7 +34,7 @@ const clovaSkillHandler = clova.Client
           speech = {
             lang: 'ja',
             type: 'PlainText',
-            value: `数字に誤りがあります。`
+            value: `そんな時間の言葉しらねえよ`
           }
           responseHelper.setSimpleSpeech(speech)
           // 第2引数にtrueを設定するとreprompt(入力が行われなかった場合の聞き返し)の文を定義できる
@@ -57,7 +57,7 @@ const clovaSkillHandler = clova.Client
       case 'Clova.NoIntent':
         // Or build speechObject with SpeechBuilder for response
         responseHelper.setSimpleSpeech(
-          clova.SpeechBuilder.createSpeechText('何限か言ってください')
+          clova.SpeechBuilder.createSpeechText('何限か言えよ')
         );
         break;
     }
