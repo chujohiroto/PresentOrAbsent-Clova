@@ -16,13 +16,13 @@ const clovaSkillHandler = clova.Client
     const sessionId = responseHelper.getSessionId();
 
     switch (intent) {
-      case 'class-set':
+      case 'class_set':
         console.log(intent.value);
         // Build speechObject directly for response
         responseHelper.setSimpleSpeech({
           lang: 'ja',
           type: 'PlainText',
-          value: 'はいはい',
+          value: getMessage(intent.value),
         });
         break;
 
@@ -56,3 +56,70 @@ const PORT = process.env.PORT || 8080;
 var server = app.listen(PORT, function () {
   console.log("Node.js is listening to PORT:" + server.address().port);
 });
+
+
+function getMessage(t) {
+  var dtl = getTimeLesson(t);
+
+  dtl.setMinutes(dtl.getMinutes() - 30);
+
+  var h = dtl.getTime() - getnow().getTime();
+
+  var t = getnow().getTime() - getToday().getTime();
+
+  var ti = h - t;
+  //var ti = dtl.getTime() - getnow().getTime();
+
+  console.log(ti);
+  //秒数で判定
+  if (ti > 0) {
+    return "間に合うよ";
+  } else {
+    return "諦めろ";
+  }
+}
+
+
+function getTimeLesson(t) {
+  var lesson;
+  var tint = Number(t)
+  switch (tint) {
+    case 1:
+      lesson = new Date(new Date().setHours(9, 0, 0, 0));
+      break;
+    case 2:
+      lesson = new Date(new Date().setHours(10, 30, 0, 0));
+      break;
+    case 3:
+      lesson = new Date(new Date().setHours(13, 0, 0, 0));
+      break;
+    case 4:
+      lesson = new Date(new Date().setHours(14, 30, 0, 0));
+      break;
+    case 5:
+      lesson = new Date(new Date().setHours(16, 0, 0, 0));
+      break;
+    case 6:
+      lesson = new Date(new Date().setHours(17, 30, 0, 0));
+      break;
+    case 7:
+      lesson = new Date(new Date().setHours(19, 0, 0, 0));
+      break;
+    case 8:
+      lesson = new Date(new Date().setHours(21, 30, 0, 0));
+      break;
+    default:
+      break;
+  }
+  return lesson;
+}
+
+function getToday() {
+  var today = new Date(new Date().setHours(0, 0, 0, 0));
+  return today;
+}
+
+function getnow() {
+  var now = new Date();
+  return now;
+}
