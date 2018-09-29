@@ -16,7 +16,8 @@ const clovaSkillHandler = clova.Client
     const sessionId = responseHelper.getSessionId();
 
     switch (intent) {
-      case 'Clova.YesIntent':
+      case 'class-set':
+        console.log(intent.value);
         // Build speechObject directly for response
         responseHelper.setSimpleSpeech({
           lang: 'ja',
@@ -24,10 +25,11 @@ const clovaSkillHandler = clova.Client
           value: 'はいはい',
         });
         break;
+
       case 'Clova.NoIntent':
         // Or build speechObject with SpeechBuilder for response
         responseHelper.setSimpleSpeech(
-          clova.SpeechBuilder.createSpeechText('いえいえ')
+          clova.SpeechBuilder.createSpeechText('何限か言ってください')
         );
         break;
     }
