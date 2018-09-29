@@ -58,7 +58,7 @@ const clovaSkillHandler = clova.Client
           {
             lang: 'ja',
             type: 'PlainText',
-            value: m + ,
+            value: m,
           }
         ]);
 
@@ -107,14 +107,7 @@ function getSound(m) {
   }
 }
 
-function getSecond(m) {
-  if (m == "間に合うよ") {
-    return;
-  }
-  else {
-    return "";
-  }
-}
+
 
 function getMessage(t) {
   var dtl = getTimeLesson(t);
