@@ -8,7 +8,7 @@ const clovaSkillHandler = clova.Client
     responseHelper.setSimpleSpeech({
       lang: 'ja',
       type: 'PlainText',
-      value: '遅刻チェック',
+      value: '大学に間に合うかチェックーーーー',
     });
   })
   .onIntentRequest(async responseHelper => {
