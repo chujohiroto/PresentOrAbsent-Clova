@@ -47,16 +47,18 @@ const clovaSkillHandler = clova.Client
           */
         }
         // Build speechObject directly for response
+        var m = getMessage(slots.class)
+
         responseHelper.setSpeechList([
           {
             lang: '',
             type: 'URL',
-            value: "https://soundeffect-lab.info/sound/battle/mp3/sword-slash1.mp3",
+            value: getSound(m),
           },
           {
             lang: 'ja',
             type: 'PlainText',
-            value: getMessage(slots.class),
+            value: m,
           }
         ]);
         break;
@@ -92,6 +94,14 @@ var server = app.listen(PORT, function () {
   console.log("Node.js is listening to PORT:" + server.address().port);
 });
 
+function getSound(m) {
+  if (m == "間に合うよ") {
+    return "https://soundeffect-lab.info/sound/battle/mp3/magic-cure4.mp3";
+  }
+  else {
+    return "https://soundeffect-lab.info/sound/battle/mp3/sword-slash4.mp3";
+  }
+}
 
 function getMessage(t) {
   var dtl = getTimeLesson(t);
