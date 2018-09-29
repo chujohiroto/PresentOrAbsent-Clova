@@ -124,7 +124,8 @@ function getMessage(t) {
   console.log(ti);
   //秒数で判定
   if (ti > 0) {
-    return "間に合うよ。残り" + String(ti / 1000).toString() + "秒";
+    var t2 = Math.ceil(ti / 1000);
+    return "間に合うよ。残り" + String(t2).toString() + "秒";
   } else {
     return "諦めろ";
   }
