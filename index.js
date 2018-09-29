@@ -99,7 +99,7 @@ var server = app.listen(PORT, function () {
 });
 
 function getSound(m) {
-  if (m == "間に合うよ") {
+  if (m != "諦めろ") {
     return "https://soundeffect-lab.info/sound/battle/mp3/magic-cure4.mp3";
   }
   else {
