@@ -40,7 +40,7 @@ const clovaSkillHandler = clova.Client
   .handle();
 
 const app = new express();
-const clovaMiddleware = clova.Middleware({ applicationId: "YOUR_APPLICATION_ID" });
+const clovaMiddleware = clova.Middleware({ applicationId: process.env.APPLICATION_ID });
 // Use `clovaMiddleware` if you want to verify signature and applicationId.
 // Please note `applicationId` is required when using this middleware.
 app.post('/bot', clovaMiddleware, clovaSkillHandler);
