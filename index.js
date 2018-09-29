@@ -89,7 +89,7 @@ var server = app.listen(PORT, function () {
 function getMessage(t) {
   var dtl = getTimeLesson(t);
 
-  dtl.setMinutes(dtl.getMinutes() - 30);
+  dtl.setMinutes(dtl.getMinutes() + 30);
 
   var h = dtl.getTime() - getnow().getTime();
 
