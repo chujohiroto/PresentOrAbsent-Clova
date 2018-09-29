@@ -47,11 +47,18 @@ const clovaSkillHandler = clova.Client
           */
         }
         // Build speechObject directly for response
-        responseHelper.setSimpleSpeech({
-          lang: 'ja',
-          type: 'PlainText',
-          value: getMessage(slots.class),
-        });
+        responseHelper.setSpeechList([
+          {
+            lang: '',
+            type: 'URL',
+            value: "https://soundeffect-lab.info/sound/battle/mp3/sword-slash1.mp3",
+          },
+          {
+            lang: 'ja',
+            type: 'PlainText',
+            value: getMessage(slots.class),
+          }
+        ]);
         break;
 
       case 'Clova.NoIntent':
