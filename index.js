@@ -8,7 +8,7 @@ const clovaSkillHandler = clova.Client
     responseHelper.setSimpleSpeech({
       lang: 'ja',
       type: 'PlainText',
-      value: '大学に間に合うかチェックーーーー',
+      value: '大学に間に合うかな',
     });
   })
   .onIntentRequest(async responseHelper => {
@@ -58,7 +58,7 @@ const clovaSkillHandler = clova.Client
           {
             lang: 'ja',
             type: 'PlainText',
-            value: m,
+            value: m + ,
           }
         ]);
 
@@ -107,6 +107,15 @@ function getSound(m) {
   }
 }
 
+function getSecond(m) {
+  if (m == "間に合うよ") {
+    return;
+  }
+  else {
+    return "";
+  }
+}
+
 function getMessage(t) {
   var dtl = getTimeLesson(t);
 
@@ -122,7 +131,7 @@ function getMessage(t) {
   console.log(ti);
   //秒数で判定
   if (ti > 0) {
-    return "間に合うよ";
+    return "間に合うよ　残り" + String(ti / 1000).toString();
   } else {
     return "諦めろ";
   }
